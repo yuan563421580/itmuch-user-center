@@ -1,0 +1,34 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    # 服务名称要用- ，不要使用_和特殊字符
+    name: user-center
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/user_center?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    hikari:
+      username: root
+      password: root123
+      # >= 6.x com.mysql.cj.jdbc.Driver
+      # <= 5.x com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  cloud:
+    nacos:
+      discovery:
+        # 指定 nacos server 地址
+        server-addr: 39.102.66.189:8848
+        # 命名空间，先在 nacos 控制台创建，需要配置id
+        # namespace: 79c61e60-afb4-447a-b957-7f651d63d619
+        # 指定集群名称：对指定微服务的一个虚拟划分 ： NJ-南京机房 BJ-北京机房
+        cluster-name: BJ
+        # 设置元数据：
+        # 元数据作用：01)提供描述信息 02)让微服务调用更加灵活，可以通过版本控制实现 v1版本访问v1,v2版本访问v2
+        metadata:
+          version: v1
+
+# 配置rocketmq
+rocketmq:
+  name-server: 39.102.66.189:9876
