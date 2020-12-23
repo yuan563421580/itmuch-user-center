@@ -38,6 +38,9 @@ spring:
           # 如果用的是RocketMQ，一定要设置
           # 如果是其他的MQ，可以为空
           group: binder-group
+        my-input:
+          destination: stream-my-test-topic
+          group: my-source-binder-group
 
 # 配置rocketmq
 rocketmq:
