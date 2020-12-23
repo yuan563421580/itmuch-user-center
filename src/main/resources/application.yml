@@ -28,6 +28,16 @@ spring:
         # 元数据作用：01)提供描述信息 02)让微服务调用更加灵活，可以通过版本控制实现 v1版本访问v1,v2版本访问v2
         metadata:
           version: v1
+    stream:
+      rocketmq:
+        binder:
+          name-server: 39.102.66.189:9876
+      bindings:
+        input:
+          destination: stream-test-topic
+          # 如果用的是RocketMQ，一定要设置
+          # 如果是其他的MQ，可以为空
+          group: binder-group
 
 # 配置rocketmq
 rocketmq:
