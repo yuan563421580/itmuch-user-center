@@ -32,6 +32,15 @@ spring:
       rocketmq:
         binder:
           name-server: 39.102.66.189:9876
+        bindings:
+          my_tags_input1:
+            consumer:
+              # 表示 my_tags_input1 消费带有 tag1 的消息
+              tags: tag1
+          my_tags_input2:
+            consumer:
+              # 表示 my_tags_input1 消费带有 tag2 或 tag3 的消息
+              tags: tag2||tag3
       bindings:
         input:
           destination: stream-test-topic
@@ -46,6 +55,12 @@ spring:
           destination: new-add-bonus
           # group 值与生产者可以不一致
           group: new-add-bonus-binder-group
+        my_tags_input1:
+          destination: stream-tags-test-topic
+          group: stream-tags-test-group1
+        my_tags_input2:
+          destination: stream-tags-test-topic
+          group: stream-tags-test-group2
 
 # spring 消息模型整合 rocketmq 的配置
 rocketmq:
