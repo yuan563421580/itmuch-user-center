@@ -1,5 +1,6 @@
 package com.itmuch.usercenter;
 
+import com.itmuch.usercenter.rocketmq.MyMqSink;
 import com.itmuch.usercenter.rocketmq.MySink;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +17,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan("com.itmuch.usercenter.dao")
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableBinding({Sink.class, MySink.class})
+@EnableBinding({Sink.class, MySink.class, MyMqSink.class})
 public class UserCenterApplication {
 
     public static void main(String[] args) {

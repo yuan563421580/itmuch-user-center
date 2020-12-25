@@ -41,7 +41,12 @@ spring:
         my-input:
           destination: stream-my-test-topic
           group: my-source-binder-group
+        my-mq-input:
+          # topic 值与生产者保持一致
+          destination: new-add-bonus
+          # group 值与生产者可以不一致
+          group: new-add-bonus-binder-group
 
-# 配置rocketmq
+# spring 消息模型整合 rocketmq 的配置
 rocketmq:
   name-server: 39.102.66.189:9876
