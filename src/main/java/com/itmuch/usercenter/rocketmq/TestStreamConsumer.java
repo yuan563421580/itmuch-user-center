@@ -3,6 +3,8 @@ package com.itmuch.usercenter.rocketmq;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.ErrorMessage;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,6 +24,16 @@ public class TestStreamConsumer {
     @StreamListener(value = Sink.INPUT, condition = "headers['my-header']=='my-condition-header'")
     public void receive(String messageBody) {
         log.info("通过stream收到了消息：messageBody = {}", messageBody);
+        // throw new IllegalArgumentException("抛异常");
     }
+
+
+    // 测试全局异常时候使用
+    @StreamListener("errorChannel")
+    public void error(Message<?> message) {
+        ErrorMessage errorMessage = (ErrorMessage) message;
+        log.warn("发生异常，errorMessage = {}", errorMessage);
+    }
+
 
 }
