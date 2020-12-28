@@ -68,4 +68,38 @@ public class UserCenterApplication {
      *
      */
 
+    /**
+     * 微服务的用户认证与授权
+     *
+     * 有状态 vs 无状态
+     *  · 有状态：优点：服务器端控制力强。
+     *          缺点：存在中心店；迁移麻烦；服务器端存储，加大了服务器的压力。
+     *  · 无状态：优点：去中心化；无存储，简单；任意扩容、缩容。
+     *          缺点：服务端控制力相对弱。
+     *
+     *
+     * JWT是什么：JWT全称Json web token, 是一个开放标准（RFC 7519）,用来在各方之间安全地传输信息。
+     *          JWT可被验证和信任，因为它是数字签名的。
+     * JWT组成：（组成 : 作用 : 内容示例）
+     *      Header(头) : 记录令牌类型、签名的算法等 : {"alg":"HS256","type":"JWT"}
+     *      Payload(有效载荷) : 携带一些用户信息 : {"userId":"1","username":"damu"}
+     *      Signature(签名) : 防止token被篡改、确保安全性 : 计算出来的签名，一个字符串
+     *
+     * JWT公式:
+     *  · Token = Base64(Header).Base64(Payload).Base64(Signature)
+     *      事例：aaaa.bbbbb.ccccc
+     *  · Signature = Header指定的签名算法(Base64(Header).Base64(Payload),秘钥)
+     *      事例：HS256(aaaa.bbbbb,秘钥)
+     *
+     * JWT操作工具类：
+     *  ~ 手记：https://www.imooc.com/article/290892
+     * 用户中心引入JWT实现逻辑
+     *  · 01).pom.xml 中引入依赖：jjwt-api 、 jjwt-impl 、 jjwt-jackson
+     *  · 02).创建工具包：JwtOperator
+     *  · 03).application.yml中配置jwt：jwt.secret:秘钥 和 jwt.expire-time-in-second:有效期
+     * 内容中心按照上述整合jwt , 注意秘钥[jwt.secret:秘钥]需要保持一致
+     *
+     */
+
+
 }

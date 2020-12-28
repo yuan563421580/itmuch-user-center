@@ -65,3 +65,10 @@ spring:
 # spring 消息模型整合 rocketmq 的配置
 rocketmq:
   name-server: 39.102.66.189:9876
+
+# 配置jwt
+jwt:
+  secret: aaaaabbbbbbccccccddddeeeeffffgggghhhh
+  # 有效期，单位秒，默认2周
+  expire-time-in-second: 1209600
+
