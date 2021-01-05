@@ -119,6 +119,18 @@
         </dependency>
         <!-- 整合 jwt 工具类依赖包 end -->
 
+        <!-- 微信小程序依赖包 -->
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-miniapp</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+
+        <!-- aop 依赖包 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
 
     </dependencies>
 

@@ -1,9 +1,9 @@
 package com.itmuch.usercenter.service.user;
 
-import com.alibaba.fastjson.JSON;
 import com.itmuch.usercenter.dao.bonus.BonusEventLogMapper;
 import com.itmuch.usercenter.dao.user.UserMapper;
 import com.itmuch.usercenter.domain.dto.messaging.UserAddBonusMsgDTO;
+import com.itmuch.usercenter.domain.dto.user.UserLoginDTO;
 import com.itmuch.usercenter.domain.entity.bonus.BonusEventLog;
 import com.itmuch.usercenter.domain.entity.user.User;
 import lombok.RequiredArgsConstructor;
@@ -52,6 +52,31 @@ public class UserService {
 
         log.info("积分添加完毕 NEW...");
 
+    }
+
+    // 模拟登陆操作
+    public User login(UserLoginDTO loginDTO, String openId){
+        User user = this.userMapper.selectOne(
+                User.builder()
+                        .wxId(openId)
+                        .build()
+        );
+        if (user == null) {
+            User userToSave = User.builder()
+                    .wxId(openId)
+                    .bonus(300)
+                    .wxNickname(loginDTO.getWxNickname())
+                    .avatarUrl(loginDTO.getAvatarUrl())
+                    .roles("user")
+                    .createTime(new Date())
+                    .updateTime(new Date())
+                    .build();
+            this.userMapper.insertSelective(
+                    userToSave
+            );
+            return userToSave;
+        }
+        return user;
     }
 
 }

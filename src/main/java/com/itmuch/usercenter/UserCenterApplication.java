@@ -99,6 +99,13 @@ public class UserCenterApplication {
      *  · 03).application.yml中配置jwt：jwt.secret:秘钥 和 jwt.expire-time-in-second:有效期
      * 内容中心按照上述整合jwt , 注意秘钥[jwt.secret:秘钥]需要保持一致
      *
+     *
+     * AOP实现登录检查
+     *  · 01).引入依赖：spring-boot-starter-aop
+     *  · 02).创建注解：CheckLogin
+     *  · 03).创建切面：CheckLoginAspect
+     * 统一管理异常：
+     *
      */
 
 
