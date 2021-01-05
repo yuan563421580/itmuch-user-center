@@ -105,7 +105,7 @@ public class UserCenterApplication {
      *  · 02).创建注解：CheckLogin
      *  · 03).创建切面：CheckLoginAspect
      * 统一管理异常：
-     *
+     *  · 01).GlobalExceptionErrorHandler
      */
 
 
