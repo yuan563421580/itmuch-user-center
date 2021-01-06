@@ -61,6 +61,14 @@ spring:
         my_tags_input2:
           destination: stream-tags-test-topic
           group: stream-tags-test-group2
+  # 配置 zipkin
+  zipkin:
+    base-url: http://39.102.66.189:9411/
+  # 配置 sleuth
+  sleuth:
+    sampler:
+      # 抽样率，默认是0.1（10%），测试为了查看数据方便所以设置成1.0
+      probability: 1.0
 
 # spring 消息模型整合 rocketmq 的配置
 rocketmq:
